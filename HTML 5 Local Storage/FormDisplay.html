@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Display</title>
+    <style>
+        .colLabel{
+            float: left;
+            width:100px;
+        }
+     </style>
+     <script>
+         function FillForm()
+         {
+             document.getElementById("fname").value = localStorage.getItem("fname");
+             document.getElementById("lname").value = localStorage.getItem("lname");
+             document.getElementById("email").value = localStorage.getItem("email");
+             document.getElementById("city").value = localStorage.getItem("city");
+             document.getElementById("age").value = localStorage.getItem("age");
+
+         }
+     </script>
+</head>
+<body onload="FillForm()">
+    
+<h2>Pushkar Form Display</h2>
+
+<form >
+    <div class="colLabel">
+        <label for="fname">First name:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="fname" name="fname" placeholder=""><br>      
+    </div>
+
+    <div class="colLabel">
+        <label for="lname">Last name:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="lname" name="lname" placeholder=""><br>      
+    </div>
+    <div class="colLabel">
+        <label for="email">Email ID:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="email" name="email" placeholder=""><br>      
+    </div>
+    <div class="colLabel">
+        <label for="email">City</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="city" name="city" placeholder=""><br>      
+    </div>
+
+    
+    <div class="colLabel">
+        <label for="age">Age:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="age" name="age" placeholder="Enter Age:"><br>      
+    </div>
+
+  
+
+</form> 
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+           .colLabel{
+               float: left;
+               width:100px;
+           }
+        </style>
+        <script>
+            function SaveForm()
+            {
+                  var flag = validation();
+                  if(flag)
+                  {
+                      store();
+                  }
+            }
+            function validation()
+            {
+                var fname = document.getElementById("fname").value;
+                var lname = document.getElementById("lname").value;
+                var mail = document.getElementById("email").value;
+                var city = document.getElementById("citySelect").value;
+                var age = document.getElementById("age").value;
+                var numbers = /^[0-9]+$/;
+                var charOnly = /^[A-Za-z]+$/;
+                 if(fname.match(charOnly)==null)
+                    {
+                    alert('First Name cannot be blank and should contain characters only');
+                    return false;
+                    }
+                     if(lname.match(charOnly)==null)
+                    {
+                        alert('Last Name cannot be blank and should contain characters only');
+                        return false;
+                    }
+                    if(age.match(numbers))
+                    {
+                        var ageValue = parseInt(age);
+                        if(ageValue<18 || ageValue>120)
+                        {
+                            alert("Age should be above 18 and below 120");
+                            return false;
+                        }
+                    }
+                    var flag = ValidateEmail(mail);
+                    return flag;
+            }
+            function ValidateEmail(mail) 
+            {
+             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+              {
+                return (true)
+              }
+                alert("You have entered an invalid email address!")
+                return (false)
+            }
+            function store(){
+                
+                var inputFname= document.getElementById("fname").value;
+                localStorage.setItem("fname", inputFname);
+                var inputLname= document.getElementById("lname").value;
+                localStorage.setItem("lname", inputLname);
+                var inputEmail= document.getElementById("email").value;
+                localStorage.setItem("email", inputEmail);
+                var inputCity= document.getElementById("citySelect").value;
+                localStorage.setItem("city", inputCity);
+                var inputAge= document.getElementById("age").value;
+                localStorage.setItem("age", inputAge);
+                
+                
+                
+                window.open('FormDisplay.html', '_blank');
+                
+                
+            }
+           
+        </script>
+    </head>
+<body>
+
+<h2>Pushkar Forms</h2>
+
+<form >
+    <div class="colLabel">
+        <label for="fname">First name:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="fname" name="fname" placeholder="Enter First Name"><br>      
+    </div>
+
+    <div class="colLabel">
+        <label for="lname">Last name:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="lname" name="lname" placeholder="Enter Last Name"><br>      
+    </div>
+    <div class="colLabel">
+        <label for="email">Email ID:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="email" name="email" placeholder="Enter Email ID"><br>      
+    </div>
+
+    <div class="colLabel">
+        <label for="fname">City:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" list="cities" id="citySelect" />
+            <datalist id="cities">
+              <option>Delhi</option>
+              <option>Mumbai</option>
+              <option>Kolkata</option>
+              <option>Chennai</option>
+              <option>Bangalore</option>
+              <option>Hyderabad</option>
+            </datalist><br>      
+    </div>
+    <div class="colLabel">
+        <label for="age">Age:</label>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="age" name="age" placeholder="Enter Age:"><br>      
+    </div>
+
+  <input type="submit" value="Submit" onclick="SaveForm()">
+  <a href="FormDisplay.html" style="display: none;" id="redirect">a</a>
+
+</form> 
+
+
+</body>
+</html>
